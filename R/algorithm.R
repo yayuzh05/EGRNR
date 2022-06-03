@@ -46,5 +46,10 @@ inference <- function(data, gene_name = "gene1", algorithm_name = "aracne", crit
   e = bnlearn::empty.graph(col)
   bnlearn::arcs(e) = sapply(new_arcs[,1:2], as.character)
   strength <- bnlearn::arc.strength(e, data, criterion = criterion)
-  return(strength)
+
+  e1 <- bnlearn::empty.graph(unique(c(strength[,1],strength[,2])))
+  bnlearn::arcs(e1) = sapply(new_arcs[,1:2], as.character)
+  network <- list("graph" = e1, "strength" = strength)
+
+  return(network)
 }

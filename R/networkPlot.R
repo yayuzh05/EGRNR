@@ -1,4 +1,4 @@
-EGRN_network_plot <- function(e, strength, title, group)
+networkPlot <- function(e, strength, title)
 {
   g <- bnlearn::as.igraph(e)
   e <- as_edgelist(g, names = TRUE)
