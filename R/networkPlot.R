@@ -1,6 +1,6 @@
-networkPlot <- function(e, strength, title)
+networkPlot <- function(strength, title)
 {
-  g <- bnlearn::as.igraph(e)
+  g <- igraph::from_data_frame(strength, directed=TRUE)
   e <- as_edgelist(g, names = TRUE)
   eName <-paste0(e[,1], "_", e[,2])
   colnames(e) <- c("from","to")
