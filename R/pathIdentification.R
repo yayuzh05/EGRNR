@@ -1,13 +1,13 @@
-pathIdentification <- function(edgelist, node = 'gene1', upper_bound = 1000) {
+pathIdentification <- function(strength, node = 'gene1', upper_bound = 1000) {
   current_path_list <- vector(mode = 'list', upper_bound)
   index <- 1
   # identify promoters
-  for (i in 1:nrow(edgelist)) {
-    if (edgelist[i,2] == node) {
-      # identify promoters
-      promoters <- unlist(promoterIdentification(edgelist, edgelist[i,1]))
-      for (j in 1:length(promoters)) {
-        current_path_list[[index]] <- c(promoters[j],edgelist[i,1])
+  for (i in 1:nrow(strength)) {
+    if (strength[i,2] == node) {
+      # identify enhancers
+      enhancers <- unlist(promoterIdentification(strength, strength[i,1]))
+      for (j in 1:length(enhancers)) {
+        current_path_list[[index]] <- c(enhancers[j],strength[i,1])
         index <- index + 1
       }
     }
